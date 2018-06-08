@@ -32,6 +32,12 @@ function hdrmeta:record(val)
   return record(self, val * 1/data[self].multiplier)
 end
 
+local record_corrected = record_corrected
+function hdrmeta:record(val, expected_interval)
+  local mult = data[self].multiplier
+  return record_corrected(self, val/mult, expected_interval/mult)
+end
+
 for i, v in ipairs({"min", "max", "mean", "stddev", "percentile"}) do
   local orig = hdrmeta[v]
   hdrmeta[v] = function(self, ...)

@@ -95,6 +95,15 @@ static int lhdr_record_value(lua_State* lua)
   return 1;
 }
 
+static int lhdr_record_corrected_value(lua_State* lua)
+{
+  struct hdr_histogram* hdr = check_hdrhistogram(lua, 3);
+  int64_t value = luaL_checknumber(lua, 2);
+  int64_t interval = luaL_checknumber(lua, 3);
+  bool success = hdr_record_corrected_value(hdr, value, interval);
+  lua_pushboolean(lua, success);
+  return 1;
+}
 
 static int lhdr_min(lua_State* lua)
 {
@@ -313,6 +322,7 @@ static const struct luaL_Reg lhdr_methods[] = {
   { "memsize", lhdr_memsize },
   { "count", lhdr_count },
   { "record", lhdr_record_value },
+  { "record_corrected", lhdr_record_corrected_value },
   { "min", lhdr_min },
   { "max", lhdr_max },
   { "mean", lhdr_mean },

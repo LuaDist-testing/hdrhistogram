@@ -3,7 +3,7 @@ require "string"
 
 local multiplier = 0.001
 
-local hdr = hdrhistogram.new(1,1000000,3, {multiplier=multiplier, unit="ms"})
+local hdr = hdrhistogram.new(1*multiplier,1000000*multiplier,3, {multiplier=multiplier, unit="ms"})
 
 local expected_min    = 0
 local expected_max    = 0

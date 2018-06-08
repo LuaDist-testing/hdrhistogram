@@ -16,10 +16,11 @@ local data = setmetatable({}, {
 function hdr.new(lowest, highest, sig, opt)
   
   opt = opt or {}
-  local self = new(lowest, highest, sig)
+  local mult = opt.multiplier or 1
+  local self = new(lowest/mult, highest/mult, sig)
   
   data[self] = {
-    multiplier = opt.multiplier or 1,
+    multiplier = mult,
     unit = opt.unit or opt.units or ""
   }
   

@@ -31,5 +31,12 @@ assert(hdr:percentile(50) == expected_p50, string.format("incorrect p50 value ex
 
 print(hdr:stats())
 print(hdr:latency_stats())
+--local json = require "cjson"
+
+local ser = hdr:serialize()
+
+local hdrcopy = hdrhistogram.unserialize(ser)
+
+assert(hdr:stats() == hdrcopy:stats())
 
 print("OK")

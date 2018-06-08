@@ -1,11 +1,11 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = "hdrhistogram"
-local _version = "0.1.1"
+local _version = "0.1.2"
 version = _version .. "-1"
 -- LuaDist source
 source = {
-  tag = "0.1.1-1",
+  tag = "0.1.2-1",
   url = "git://github.com/LuaDist-testing/hdrhistogram.git"
 }
 -- Original source
@@ -28,7 +28,8 @@ build = {
   modules = {
     ["hdrhistogram.hdr"] = {
       sources = {"hdr_histogram.c", "lua_hdrhistogram.c"},
-      defines = {("DIST_VERSION=\"%s\""):format(_version)}
+      defines = {("DIST_VERSION=\"%s\""):format(_version)},
+      variables={CFLAGS="-ggdb"}
     },
     hdrhistogram = "hdrhistogram.lua"
   }

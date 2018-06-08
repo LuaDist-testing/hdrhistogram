@@ -33,7 +33,7 @@ function hdrmeta:record(val)
 end
 
 local record_corrected = record_corrected
-function hdrmeta:record(val, expected_interval)
+function hdrmeta:record_corrected(val, expected_interval)
   local mult = data[self].multiplier
   return record_corrected(self, val/mult, expected_interval/mult)
 end

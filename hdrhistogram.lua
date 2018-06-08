@@ -17,7 +17,6 @@ function hdr.new(lowest, highest, sig, opt)
   
   opt = opt or {}
   local self = new(lowest, highest, sig)
-  print(type(self))
   
   data[self] = {
     multiplier = opt.multiplier or 1,
@@ -55,6 +54,16 @@ function hdr.unserialize(tbl)
     unit= tbl._unit or ""
   }
   return new_hdr
+end
+
+local merge = hdrmeta.merge
+function hdrmeta:merge(hdr2)
+  if data[self].multiplier ~= data[hdr2].multiplier then
+    error("HDR Histograms have different multipliers and can't be merged")
+  elseif data[self].unit ~= data[hdr2].unit then
+    error("HDR Histograms have different units and can't be merged")
+  end
+  return merge(self, hdr2)
 end
 
 function hdrmeta:stats(percentiles)

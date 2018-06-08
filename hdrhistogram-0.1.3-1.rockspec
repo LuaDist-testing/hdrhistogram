@@ -1,11 +1,11 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = "hdrhistogram"
-local _version = "0.1.2"
+local _version = "0.1.3"
 version = _version .. "-1"
 -- LuaDist source
 source = {
-  tag = "0.1.2-1",
+  tag = "0.1.3-1",
   url = "git://github.com/LuaDist-testing/hdrhistogram.git"
 }
 -- Original source
